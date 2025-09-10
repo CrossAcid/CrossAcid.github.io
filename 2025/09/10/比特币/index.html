@@ -1,0 +1,507 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>比特币基础学习 | CrossAcid の Blogs</title><meta name="author" content="CrossAcid"><meta name="copyright" content="CrossAcid"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="本文主要介绍比特币相关基础内容，包括基础介绍，比特币的作用、获取方式以及与传统货币的区别（特点），并介绍了区块链、交易所、公私钥以及工作量证明机制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="比特币基础学习">
+<meta property="og:url" content="http://crossacid.github.io/2025/09/10/%E6%AF%94%E7%89%B9%E5%B8%81/index.html">
+<meta property="og:site_name" content="CrossAcid の Blogs">
+<meta property="og:description" content="本文主要介绍比特币相关基础内容，包括基础介绍，比特币的作用、获取方式以及与传统货币的区别（特点），并介绍了区块链、交易所、公私钥以及工作量证明机制">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://crossacid.github.io/2025/09/10/%E6%AF%94%E7%89%B9%E5%B8%81/%E5%8C%BA%E5%9D%97%E9%93%BE.png">
+<meta property="article:published_time" content="2025-09-10T11:39:53.015Z">
+<meta property="article:modified_time" content="2025-09-10T13:23:17.211Z">
+<meta property="article:author" content="CrossAcid">
+<meta property="article:tag" content="区块链">
+<meta property="article:tag" content="比特币">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://crossacid.github.io/2025/09/10/%E6%AF%94%E7%89%B9%E5%B8%81/%E5%8C%BA%E5%9D%97%E9%93%BE.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "比特币基础学习",
+  "url": "http://crossacid.github.io/2025/09/10/%E6%AF%94%E7%89%B9%E5%B8%81/",
+  "image": "http://crossacid.github.io/2025/09/10/%E6%AF%94%E7%89%B9%E5%B8%81/%E5%8C%BA%E5%9D%97%E9%93%BE.png",
+  "datePublished": "2025-09-10T11:39:53.015Z",
+  "dateModified": "2025-09-10T13:23:17.211Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "CrossAcid",
+      "url": "http://crossacid.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://crossacid.github.io/2025/09/10/%E6%AF%94%E7%89%B9%E5%B8%81/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '比特币基础学习',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/modify.css"><link rel="stylesheet" href="/css/transpancy.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://picture-1324355084.cos.ap-chengdu.myqcloud.com/blog/background_compressed.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://avatars.githubusercontent.com/u/68099788?v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(2025/09/10/比特币/区块链.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">CrossAcid の Blogs</span></a><a class="nav-page-title" href="/"><span class="site-name">比特币基础学习</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">比特币基础学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-10T11:39:53.015Z" title="发表于 2025-09-10 19:39:53">2025-09-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-10T13:23:17.211Z" title="更新于 2025-09-10 21:23:17">2025-09-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>比特币基础学习</h1>
+<h2 id="基本介绍">基本介绍</h2>
+<blockquote>
+<p>比特币：人类历史上第一种数字货币，总量有限</p>
+</blockquote>
+<blockquote>
+<p>数字货币：数字货币是基于数学加密原理构建的不可伪造的货币系统，而比特币是第一个基于数学加密原理构建的分布式数字货币系统</p>
+</blockquote>
+<blockquote>
+<p>比特币和区块链的关系：比特币使用区块链技术实现了数字货币的可信支付</p>
+</blockquote>
+<blockquote>
+<p>区块链是什么：通俗来讲，是一个所有人可共同维护、不可随意篡改的分布式账本【详细见5.1 区块链】</p>
+</blockquote>
+<h2 id="比特币的作用">比特币的作用</h2>
+<ol>
+<li>价值存储：许多人将其视作”数字黄金”，供应量恒定（<strong>上限2100万枚</strong>），具有抗通胀、稀缺性与全球流动性。</li>
+<li>跨境转账/结算：<strong>点对点支付</strong>，无国界、7×24小时，通常较快，费用随网络拥堵波动。</li>
+<li>投资与资产配置：高波动高风险；机构与个人用于分散投资或长期持有。</li>
+<li>支付：部分商户接受BTC直接或通过支付网关间接结算。</li>
+<li>抵押/金融创新：在部分加密金融场景中作为抵押物或参与衍生品交易（需了解清算风险）</li>
+</ol>
+<h2 id="如何获得比特币">如何获得比特币</h2>
+<ol>
+<li>购买，通过合规的加密资产交易所用法币（人民币、美元等）或稳定币买入</li>
+<li>挖矿，使用专业的计算能力强大的计算机（个人计算机没有那个能力了现在），解决复杂的数学难题（工作量证明机制），从而竞争打包一个区块的权力。成功获得这个权力的“矿工”，会得到两部分奖励，一个是新生成的比特币（每四年减半一次），一个是该区块内所有交易的手续费</li>
+<li>别人买你东西的支付</li>
+<li>借贷、质押等高风险低收益手段</li>
+</ol>
+<blockquote>
+<p><strong>区块奖励（Block Reward）</strong>：</p>
+<p>2009年创始块：50 BTC</p>
+<p>2012年第一次减半：25 BTC</p>
+<p>2016年第二次减半：12.5 BTC</p>
+<p>2020年5月第三次减半：6.25 BTC</p>
+<p>…</p>
+<p><strong>交易手续费（Transaction Fees）</strong>：这笔费用不是固定的，它由用户支付。用户为了让自己发起的交易能更快地被矿工打包进区块，会支付一定的费用。一个区块内所有交易的手续费会加起来，奖励给打包该区块的矿工。这个数值随时都在波动。</p>
+</blockquote>
+<h2 id="与传统货币的区别（特点）">与传统货币的区别（特点）</h2>
+<table>
+<thead>
+<tr>
+<th>特性\货币</th>
+<th>传统货币</th>
+<th>比特币</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发行和管理</td>
+<td>由中央银行统一发行和管理（如美联储、中国人民银行，注意：<strong>区别于中国银行，中国工商银行等商业银行</strong>）</td>
+<td>由代码、算法和全网用户共识控制，无单一发行方和控制方</td>
+</tr>
+<tr>
+<td>实体</td>
+<td>有实体，也有数字形式</td>
+<td>以数据形式存在，没有物理实体</td>
+</tr>
+<tr>
+<td>总量</td>
+<td>无限供应，根据经济政策印发，存在通胀的可能</td>
+<td><strong>总量上限为2100万个，永不增发</strong>。通缩特性</td>
+</tr>
+<tr>
+<td>交易匿名</td>
+<td>实名制，与个人信息绑定</td>
+<td>交易记录可见，但地址背后的<strong>人物身份匿名不可见</strong></td>
+</tr>
+<tr>
+<td>交易是否可逆</td>
+<td>可逆，可通过银行或支付机构（支付宝）找回、撤销等</td>
+<td><strong>不可逆</strong>：一旦交易被区块链确认，无法撤销、追回</td>
+</tr>
+<tr>
+<td>交易时间</td>
+<td>受工作时间限制（节假日），跨境汇款慢</td>
+<td>持续不间断运行。到账时间与网络拥塞程度有关，一般10min - 1h</td>
+</tr>
+<tr>
+<td>价值来源</td>
+<td>国家信用，由国家法律和信用担保</td>
+<td><strong>价值共识</strong>，完全来源于社区用户对其的信任和共识（换句话说如果大家觉得它不值钱，那它就不值钱），所以价值波动大</td>
+</tr>
+<tr>
+<td>安全性</td>
+<td>由密码学和分布式网络保证</td>
+<td>由国家暴力机关和金融机构的风控系统来保证</td>
+</tr>
+</tbody>
+</table>
+<h2 id="概念详解">概念详解</h2>
+<h3 id="区块链是什么">区块链是什么</h3>
+<blockquote>
+<p>区块链就是一个不断增长的全网总账本，<strong>每个节点都拥有完整的区块链（账本）</strong>，并且，节点总是信任最长的区块链，谁在上面记了一笔账，所有人同时更新一份副本，且过去的记录一旦写入就几乎改不动</p>
+</blockquote>
+<p>区块链是一个一个区块构成的有序链表（每个区块都指向前一个区块，从而形成一个链条），如图所示</p>
+<p><img src="/%E5%8C%BA%E5%9D%97%E9%93%BE.png" alt="区块链"></p>
+<ul>
+<li>每个区块都有一个唯一的哈希标识，被称为区块哈希</li>
+<li>每个区块通过记录上一个区块的哈希来指向上一个区块</li>
+<li>每个区块还有一个Merkle哈希用来确保该区块的所有交易记录无法被篡改</li>
+</ul>
+<p><strong>区块本身记录的主要数据就是一系列交易，所以，区块链首先要保证任何交易数据都不可修改</strong></p>
+<p>在区块的头部，有一个<code>Merkle Hash</code>字段，它记录了本区块所有交易的哈希，就是把所有记录作为参数，计算出一个哈希</p>
+<p>区块本身用<code>Block Hash</code>——也就是区块哈希来标识。但是，一个区块自己的区块哈希并没有记录在区块头部，而是通过计算区块头部的哈希得到的，区块头部包括version、<code>上一个区块哈希</code>、<code>Merkle Hash</code>、时间戳、bits、nonece等部分组成</p>
+<blockquote>
+<p>如果一个攻击者需要修改一个区块中的交易，就需要重新计算<code>Merkle Hash</code>，进而需要计算由<code>Merkle Hash</code>得到的<code>Block Hash</code>，而<code>Block Hash</code>一变，又会导致下一区块记录的<code>上一区块哈希</code>失效，所以又需要修改，所以，要修改后续所有区块，这个攻击者必须掌握全网51%以上的算力才行，进而，修改区块链的难度是非常非常大的</p>
+</blockquote>
+<h3 id="交易所和公私钥">交易所和公私钥</h3>
+<blockquote>
+<p>类比一下，交易所约等于银行，私钥约等于银行卡密码，公钥为银行卡号</p>
+</blockquote>
+<h4 id="交易所">交易所</h4>
+<p>交易所是一个在线平台，就像一个<strong>网上银行</strong>。它的主要功能是提供一个市场，让用户能够用传统货币（如人民币、美元）去购买、出售或兑换各种加密货币（如比特币、以太坊）</p>
+<p>提供如下服务：</p>
+<ul>
+<li>
+<p><strong>法币兑换通道</strong>：通过银行卡、支付宝等方式向交易所充值人民币，然后用它来购买BTC等加密货币</p>
+</li>
+<li>
+<p><strong>交易市场</strong>：提供各种交易对，例如 BTC/USD（用美元买比特币）、ETH/BTC（用比特币买以太坊）等</p>
+</li>
+<li>
+<p><strong>托管服务</strong>：把币放在交易所，<strong>实际上是由交易所替你保管这些资产</strong>。你登录交易所账户后看到的余额，只是交易所给你记的“账”，真正的币存放在交易所掌控的大钱包里</p>
+</li>
+</ul>
+<p>存在如下风险和特点</p>
+<ul>
+<li>当你把币存在交易所时，控制权实际上在交易所手里。如果交易所被黑客攻击、倒闭或跑路，你的资产可能会血本无归</li>
+<li>操作简单，适合新手，交易速度快</li>
+<li>大型交易所通常需要遵守所在国的法律法规，因此需要你实名认证</li>
+</ul>
+<h4 id="私钥">私钥</h4>
+<p>私钥是一串由数字和字母组成的、极其机密的<strong>密码</strong>。它是比特币和加密货币安全体系中最最核心的概念。</p>
+<ul>
+<li>
+<p>谁拥有私钥，谁就完全控制着对应地址上的所有加密货币。它就是你资产的<strong>绝对所有权凭证</strong></p>
+</li>
+<li>
+<p>要花费（转出）比特币，必须使用私钥对交易进行数字“签名”，以证明你确实是资产的主人。这个签名过程是数学化的，非常安全，且不会泄露私钥本身。</p>
+</li>
+<li>
+<p>字符串形式：看起来像这样：<code>5Kb8kLf9zgWQnogidDA76MzPL6TsZZY36hWXMssSzNydYXYB9KF</code>，此外还有助记词形式和二维码形式</p>
+</li>
+<li>
+<p>为了安全起见，一般<strong>离线存储</strong></p>
+</li>
+</ul>
+<p><strong>一旦丢失私钥/助记词，将永久失去对应地址上的所有资产，无人能够帮你找回。</strong></p>
+<h4 id="公钥">公钥</h4>
+<p>公钥也是一长串由数字和字母组成的字符串。由私钥<strong>通过一种复杂的</strong>单向数学函数推导计算出来的</p>
+<p>作用如下</p>
+<ul>
+<li>
+<p><strong>生成地址</strong>：<strong>钱包地址</strong>并不是公钥本身，而是由公钥经过哈希运算（另一种单向数学变换）和编码后生成的、更短更易用的字符串。所以它们的生成关系是：</p>
+<p><strong>私钥 → （生成）→ 公钥 → （生成）→ 钱包地址</strong></p>
+</li>
+<li>
+<p><strong>加密验证</strong>：它是整个系统能够实现“公开”却依然“安全”的基石。它主要完成两个功能：</p>
+<p><strong>交易验证</strong>：当你要用私钥对一笔交易进行签名时，网络上的其他人可以使用你的<strong>公钥</strong>来验证这个签名是否有效，从而确认你是否是资产的合法所有者。<strong>验证过程不需要知道你的私钥</strong>。</p>
+<p><strong>信息加密</strong>：其他人可以用你的公钥对一条信息进行加密，那么这条加密后的信息全世界只有拥有对应私钥的你才能解密和阅读</p>
+</li>
+</ul>
+<blockquote>
+<p>可以类比成寄信的信箱，钱包地址为信箱编号，公钥为为信箱投递口，私钥为信箱钥匙</p>
+<ul>
+<li>信箱编号（钱包地址）：公开的，你想让别人给你寄信，就要告诉他你的信箱编号（比如“103号信箱”）</li>
+<li>信箱投递口（公钥）：公开的，任何人都可以看到。寄信人（发送比特币的人）把信（交易）通过投递口塞进去。这个投递口的设计保证了<strong>一旦信塞进去，就只有拥有钥匙的人才能取出</strong>。投递口可以验证信是否塞对了信箱。</li>
+<li>信箱钥匙（私钥）：只有你自己持有。只有用这把钥匙才能打开信箱，取出里面的所有信件</li>
+</ul>
+</blockquote>
+<h3 id="工作量证明机制">工作量证明机制</h3>
+<p>工作量证明是一种用来确保网络安全和达成共识的机制，它要求参与者（矿工）完成一个计算成本高昂但验证容易的数学难题，以此来证明自己投入了真实的工作量，从而获得记账权和新币奖励</p>
+<p><strong>第1步：收集交易</strong></p>
+<p>矿工节点从比特币网络中收集尚未确认的交易，并将它们放入一个新的“区块”中。</p>
+<p><strong>第2步：构建区块头</strong></p>
+<p>矿工会构建一个区块头（Block Header），其中包含一些重要信息，如：</p>
+<ul>
+<li>上一个区块的哈希值（形成链的关键）</li>
+<li>本区块中所有交易的默克尔树根（Merkle hash）</li>
+<li>时间戳</li>
+<li>一个 <strong>“随机数”（Nonce）</strong> 的变量（ initially 设为0）</li>
+<li>难度目标值（一个决定解题难度的数值）</li>
+</ul>
+<p><strong>第3步：寻找有效哈希（“解题”的核心）</strong></p>
+<p>矿工的核心任务就是：<strong>不断改变区块头中的随机数（Nonce）</strong>，然后对整个区块头进行哈希计算（SHA-256算法），目标是让计算出的哈希值<strong>小于</strong>当前网络设定的<strong>目标值</strong>。</p>
+<p><strong>这个过程就像：</strong></p>
+<blockquote>
+<p>我给你一个骰子，要求你“必须掷出小于等于3的点数”。你可能掷几次就成功了。但如果我要求“必须掷出1点”，你可能要掷很多次。比特币网络的要求极其苛刻，相当于要求“掷出一个有20个面的骰子，必须连续掷出10个1点”。<strong>唯一的办法就是疯狂地、不停地掷骰子（计算）。</strong></p>
+</blockquote>
+<p><strong>第4步：广播与验证</strong></p>
+<p>一旦某个矿工找到了一个满足条件的Nonce和哈希值，他就会立即将这个<strong>新区块</strong>广播给全网。</p>
+<p>其他节点收到后，会进行<strong>验证</strong>。验证非常简单：他们只需要拿这个矿工提供的区块头（包含他找到的Nonce）重新计算一次哈希，看看结果是否真的小于目标值。<strong>验证一次计算即可完成，极其迅速。</strong></p>
+<p><strong>第5步：接受与奖励</strong></p>
+<p>如果验证通过，全网其他节点就会接受这个新区块，将其追加到自己本地区块链的末尾。</p>
+<p>找到这个区块的矿工就会获得<strong>区块奖励</strong>（新铸造的比特币）和<strong>交易手续费</strong>作为报酬。</p>
+<p>然后，所有矿工立即开始基于这个新区块，竞争下一个区块，如此循环。</p>
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/markmap-toolbar@0.18.10/dist/style.css"><script src="https://fastly.jsdelivr.net/npm/d3@7"></script><script src="https://fastly.jsdelivr.net/npm/markmap-view@0.18.10"></script><script src="https://fastly.jsdelivr.net/npm/markmap-toolbar@0.18.10"></script>
+<link rel="stylesheet" href="/css/markmap.css">
+
+<script src="/js/markmap.js"></script>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://crossacid.github.io">CrossAcid</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://crossacid.github.io/2025/09/10/%E6%AF%94%E7%89%B9%E5%B8%81/">http://crossacid.github.io/2025/09/10/比特币/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://crossacid.github.io" target="_blank">CrossAcid の Blogs</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a><a class="post-meta__tags" href="/tags/%E6%AF%94%E7%89%B9%E5%B8%81/">比特币</a></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/08/31/AI%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" title="AI使用记录"><img class="cover" src="/2025/08/31/AI%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/AI%E6%A6%82%E8%A7%88.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">AI使用记录</div></div><div class="info-2"><div class="info-item-1">记录一些最近使用的AI和其特点</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://avatars.githubusercontent.com/u/68099788?v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">CrossAcid</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/CrossAcid"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/CrossAcid" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:crossacid@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">比特币基础学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">基本介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">比特币的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97%E6%AF%94%E7%89%B9%E5%B8%81"><span class="toc-number">1.3.</span> <span class="toc-text">如何获得比特币</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E%E4%BC%A0%E7%BB%9F%E8%B4%A7%E5%B8%81%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%88%E7%89%B9%E7%82%B9%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">与传统货币的区别（特点）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.5.</span> <span class="toc-text">概念详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E5%9D%97%E9%93%BE%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.5.1.</span> <span class="toc-text">区块链是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E6%98%93%E6%89%80%E5%92%8C%E5%85%AC%E7%A7%81%E9%92%A5"><span class="toc-number">1.5.2.</span> <span class="toc-text">交易所和公私钥</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%A4%E6%98%93%E6%89%80"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">交易所</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%81%E9%92%A5"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">私钥</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AC%E9%92%A5"><span class="toc-number">1.5.2.3.</span> <span class="toc-text">公钥</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E9%87%8F%E8%AF%81%E6%98%8E%E6%9C%BA%E5%88%B6"><span class="toc-number">1.5.3.</span> <span class="toc-text">工作量证明机制</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/09/10/%E6%AF%94%E7%89%B9%E5%B8%81/" title="比特币基础学习"><img src="/2025/09/10/%E6%AF%94%E7%89%B9%E5%B8%81/%E5%8C%BA%E5%9D%97%E9%93%BE.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="比特币基础学习"/></a><div class="content"><a class="title" href="/2025/09/10/%E6%AF%94%E7%89%B9%E5%B8%81/" title="比特币基础学习">比特币基础学习</a><time datetime="2025-09-10T11:39:53.015Z" title="发表于 2025-09-10 19:39:53">2025-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/31/AI%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" title="AI使用记录"><img src="/2025/08/31/AI%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/AI%E6%A6%82%E8%A7%88.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AI使用记录"/></a><div class="content"><a class="title" href="/2025/08/31/AI%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" title="AI使用记录">AI使用记录</a><time datetime="2025-08-31T07:33:24.037Z" title="发表于 2025-08-31 15:33:24">2025-08-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/11/mcp/" title="MCP Server学习"><img src="/2025/08/11/mcp/mcp.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MCP Server学习"/></a><div class="content"><a class="title" href="/2025/08/11/mcp/" title="MCP Server学习">MCP Server学习</a><time datetime="2025-08-11T15:25:21.217Z" title="发表于 2025-08-11 23:25:21">2025-08-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/20/MySQL%E5%85%AB%E8%82%A1%E6%95%B4%E7%90%86/" title="MySQL知识整理"><img src="/2025/07/20/MySQL%E5%85%AB%E8%82%A1%E6%95%B4%E7%90%86/redolog+undolog.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL知识整理"/></a><div class="content"><a class="title" href="/2025/07/20/MySQL%E5%85%AB%E8%82%A1%E6%95%B4%E7%90%86/" title="MySQL知识整理">MySQL知识整理</a><time datetime="2025-07-20T11:52:52.627Z" title="发表于 2025-07-20 19:52:52">2025-07-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/29/%E7%AE%97%E6%B3%95/" title="算法-数组笔记（1）"><img src="/2025/06/29/%E7%AE%97%E6%B3%95/69_fig1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法-数组笔记（1）"/></a><div class="content"><a class="title" href="/2025/06/29/%E7%AE%97%E6%B3%95/" title="算法-数组笔记（1）">算法-数组笔记（1）</a><time datetime="2025-06-29T07:23:17.560Z" title="发表于 2025-06-29 15:23:17">2025-06-29</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By CrossAcid</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      false 
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
